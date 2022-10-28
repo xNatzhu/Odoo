@@ -14,17 +14,59 @@ from odoo import models, fields, api #API SON LOS METADATOS @api.depends.
 #     def _value_pc(self):
 #         self.value2 = float(self.value) / 100
 
-class Aparcamiento(models.Model):
+class Aparcamiento(models.Model): #Herencia para heredar los metodos que se encuentran en Model.
     _name = "garage.Aparcamiento" #define al modelo real. #Si queremos buscar un aparcamiento se debe buscar por garaje.aparcamiento
     _description = "Permite definir las caracteristicas de un aparcamiento."
     name = fields.Char("Dirrecion", required=True) #Definimos el campo, descripcion o el texto que nos va ayudar a identificar al objeto cuando navegamos o cuando buscamos
     plazas = fields.Integer(string="Plazas", required=True) #required - true es un campo obligatorio.
+    
+    #-----------------------RELACION ENTRE TABLAS------------------------------------
+
+    #RELACIONES ENTRE TABLAS: 
+
+    # Es decir por un aparcamiento hay n de coches. ###Propiedades de navegacion###
+
+    # la entidad padre tendriamos la coleccion del hijo, y del hijo la entidad padre.
+
+    #Para comenzar vamos a crear una variable para almacenar una lista de coches. Para realizar esta accion se utiliza nombreDeClase_id. Y id si es una o ids si es mucha.
+
+    Coche_ids = fields.One2many("garage.Coche", "Aparcamiento_Id", string="Coches")
+
+    #PARA PODER DEFINIR LAS RELACIONES TENEMOS LOS DIFERENTES FIELDS:
+    # UNO A MUCHOS [En este ejemplo seria un aparcamiento a muchos coches] -> One2many
+    # MUCHO A UNO - > Many2one
+    # MUCHOS A MUCHOS -> Many2many
+
+    #Many significa muchos
+    # 2 significa = a [two]
+    # one significa uno
 
 
-class Coche(models.Model):
-    _name= "garage.Coche"
+    #---------------------------------------------------------------------------------------------
+
+
+
+
+
+class Coche(models.Model): 
+    _name= "garage.Coche" #FORMATO DE TABLA PARA LAS RELACIONES.
     _description = "Permite definir las caracteristicas de los coches."
     _order ="name" #Permite indicar que orden por defecto va tener los datos de esta tabla.
+
+    #-----------------------RELACION ENTRE TABLAS------------------------------------
+
+    Aparcamiento_Id = fields.Many2one("garage.Aparcamiento", string="Aparcamiento") #Esto me sirve para decirle Odoo como vuelvo hacia atras. ##EL NOMBRE DEL PADRE##
+
+    #RELACION ENTRE TABLAS:
+    # -> En este caso muchos coches pueden estar vinculado a un solo garaje es decir MUCHOS A UNO.
+
+
+
+    # ->  MANTENIMIENTO PUEDE TENER MUCHOS COCHES AL IGUAL QUE MANTEMIENTOS ENTONCES ESTO SERIA MUCHO A MUCHO.
+
+    Mantenimiento_ids = fields.Many2many("garaje.Mantenimiento", string="Mantenimientos")
+
+    #---------------------------------------------------------------------------------------------
     name = fields.Char(string="Matricula", required = True, size=7 ) #la matricula del coche
         #size: tamaño maximo de la matricula 7. No se va poner mas que  7 caracteres.
 
@@ -65,6 +107,19 @@ class Mantenimiento(models.Model):
     coste = fields.Float("Coste", (8,2), help ="Esto es el coste del mantenimiento total.")
 
     #Help -> permite darle algo descriptivo al usuario si se llega trabar.
+
+    #-----------------------RELACION ENTRE TABLAS------------------------------------
+    Coche_ids = fields.Many2many("garage.Coche", string="Mantenimiento")
+
+    #CREARA UNA TABLA APARTE PARA QUE PODAMOS CONSULTAR DATOS SERIOS EN LA TABLA.
+
+    #---------------------------------------------------------------------------
+
+
+
+
+
+
 
 
 
