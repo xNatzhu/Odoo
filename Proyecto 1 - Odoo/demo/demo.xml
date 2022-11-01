@@ -1,4 +1,4 @@
-<odoo>
+<odoo> <!--DATOS DE PRUEBAS-->
     <data>
         <!--  -->
         <!--   <record id="object0" model="my_module.my_module"> -->
@@ -26,5 +26,86 @@
         <!--     <field name="value">40</field> -->
         <!--   </record> -->
         <!--  -->
+
+        <!--OBJETO DE PRUEBA 01 - APARCAMIENTO -->
+
+        <!--Cada ID va ir de forma secuencial para cargar los datos demostracion-->
+        <record id="aparcamiento1" model="garaje.Aparcamiento"> <!--El model se escoge el modelo + la clase-->
+            <field name="name">Plaza Mayor</field> <!--Field iran todo los datos rellenados-->
+            <field name="plazas">8</field>
+        
+        
+        <!--OBJETO DE PRUEBA 02 - APARCAMIENTO-->
+        
+        <!--Cada ID va ir de forma secuencial para cargar los datos demostracion-->
+        <record id="aparcamiento2" model="garaje.Aparcamiento"> <!--El model se escoge el modelo + la clase-->
+            <field name="name">Calle arriba</field> <!--Field iran todo los datos rellenados(en este caso la direccion)--> 
+            <field name="plazas">8</field> <!--La cantidad de plaza todo lo que solicita el models.-->
+        </record>
+
+
+        <!--OBJETO DE PRUEBA 01 - COCHE-->
+
+        <record id="coche1" model="garaje.Coche"> 
+            <field name="name">169852</field> 
+            <field name="modelo">Mercedes A5</field> 
+            <field name="construido">1996-12-05</field> <!--El año, el mes y el dia-->
+            <field name="consumo">15.89</field> 
+            <field name="averiado">True</field> 
+            <field name="descripcion">Un autito</field> 
+            <field name="Aparcamiento_Id" ref="">8</field> 
+        </record>
+
+        
+        <!--OBJETO DE PRUEBA 02 - COCHE-->
+
+        <record id="coche2" model="garaje.Coche"> 
+            <field name="name">1658AC</field> 
+            <field name="modelo">Audi A4</field> 
+            <field name="construido">2008-10-02</field> 
+            <field name="consumo">4</field> 
+            <field name="averiado">0</field> 
+            <field name="descripcion">Un auto de calidad</field> 
+            <field name="Aparcamiento_Id" ref="aparcamiento1"></field> <!--Vincula el ID del aparcamiento del padre-->
+        </record>
+
+
+        <!--OBJETO DE PRUEBA 03 - COCHE-->
+        <record id="coche3" model="garaje.Coche"> 
+            <field name="name">16PDAC</field> 
+            <field name="modelo">Peugeot 206</field> 
+            <field name="construido">1992-02-02</field> 
+            <field name="consumo">45.5</field> 
+            <field name="averiado">False</field> 
+            <field name="descripcion">Una descripcion del coche</field> 
+            <field name="Aparcamiento_Id" ref="aparcamiento2"></field> <!--Vincula el ID del aparcamiento del padre-->
+            <!--Si el field no lleva valor se puede realizar esta accion
+            <field name="Aparcamiento_Id" ref="aparcamiento2"/>
+            De esta manera se relacionan los aparcamiento y los coches.
+            -->
+        </record>
+        
+        <!--OBJETO DE PRUEBA 01 - MANTENIMIENTO-->
+
+        <record id="mantenimiento1" model="garaje.Mantenimiento">
+
+        <field name="fecha" Eval="datetime.now()"/> <!--EVAL significa campo calculado. datetime.now() significa la fecha de hoy-->
+        <field name="tipo">l</field>
+        <field name="coste">23</field>
+        <!--REFERENCIA DE MUCHO A MUCHOS
+        Se podria colocar la referencia en los coches o directamente dejarlo en mantenimiento. NO SE LLENAN LOS DOS EN ESTA RELACION
+        -->
+        <field name="Coche_ids" eval="[(6, 0, ref('coche1')), ref('coche2'))"/>
+        <!--ORM
+            
+            (6, 0, ids)
+            reemplaza todos los registros existentes en el conjunto por la lista ids, equivalente a utilizar el comando 5 seguido del comando 4 para cada id en ids.
+
+            Va remplazar todo los datos existentes y va cargar lo de demostracion.
+            el 6 -> remplaza, 0 significa que es un elemento lista, y ref son los ID de que va estar vinculado el mantenimiento, es decir que han recibido mantenimiento
+        -->
+        </record>
+
+
     </data>
 </odoo>

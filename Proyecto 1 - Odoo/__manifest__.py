@@ -36,14 +36,16 @@
     # always loaded
     'data': [
         #Se carga siempre todos los datos precargados que hemos configurado en la data. Al contrario al demo en este caso se descargan automaticamente.
-        # 'security/ir.model.access.csv',
+        'security/garaje_segurity.xml', #El archivo xml debe ir primero, ya que debe leer primero la secuencia del xml y luego el csv
+        'security/ir.model.access.csv',
         'views/views.xml',
-        'views/templates.xml',
+        'views/templates.xml', # datos permanente. Es decir que no hay necesidad de pedir permiso para cargarlo, lo carga automaticamente,
+        'data/garaje_data.xml', #es el template solo que lo haremos en la data.
     ],
     # only loaded in demonstration mode
     'demo': [
         #El demo esta configurada con datos de pruebas. Eso no lo cargara al menos que nosotros le solicitemos recargar los datos de demostracion.
-        'demo/demo.xml',
+        'demo/demo.xml', # modo de demostracion - datos temporales
     ],
 
     #EN ODOO SE TRABAJA CON DOS TIPOS DE FICHEROS PY (PYTHON) Y XML (VISTAS, INFORMES, DATOS, ECT)
