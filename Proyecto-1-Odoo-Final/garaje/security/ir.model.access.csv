@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_garaje_aparcamiento_manager,garaje.aparcamiento,model_garaje_aparcamiento,garaje_group_manager,1,1,1,1
+access_garaje_coche_manager,garaje.coche,model_garaje_coche,garaje_group_manager,1,1,1,1
+access_garaje_mantenimiento_manager,garaje.mantenimiento,model_garaje_mantenimiento,garaje_group_manager,1,1,1,1
+
+access_garaje_aparcamiento_user,garaje.aparcamiento,model_garaje_aparcamiento,garaje_group_user,1,1,1,1
+access_garaje_coche_user,garaje.coche,model_garaje_coche,garaje_group_user,1,1,1,1
+access_garaje_mantenimiento_user,garaje.mantenimiento,model_garaje_mantenimiento,garaje_group_user,1,1,1,1
+
+access_garaje_aparcamiento_view,garaje.aparcamiento,model_garaje_aparcamiento,garaje_group_view,1,0,0,0
+access_garaje_coche_view,garaje.coche,model_garaje_coche,garaje_group_view,1,1,1,1
+access_garaje_mantenimiento_view,garaje.mantenimiento,model_garaje_mantenimiento,garaje_group_view,1,1,1,1
+
