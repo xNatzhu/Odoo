@@ -12,6 +12,9 @@
 						<field name="name" />
 						<field name="plazas" />
 					</group>
+					<group>
+						<field name ="cocheIds"/>
+					</group>
 				</sheet>
 				<!-- mail mixin fields -->
 				<div class="oe_chatter">

@@ -4,7 +4,8 @@
 
 from odoo import api, fields, models
 from odoo.tools.translate import _
-
+from dateutil.relativedelta import * 
+from datetime import date 
 
 class GarajeCoche(models.Model):
     _name = 'garaje.coche'
@@ -29,8 +30,7 @@ class GarajeCoche(models.Model):
         string="Fecha del modelo",
     )
     consumo = fields.Float(
-        'Consumo', #string -> no permite la etiqueta string al ser float.
-        (4,1), #limit
+        string='Consumo', 
         default= 0.0, 
         help ='Consumo promedio de cada 100 kms'
     )
@@ -38,3 +38,35 @@ class GarajeCoche(models.Model):
         string = "Averiado",
         default = False
     )
+    
+    #relational fields
+    aparcamientoId = fields.Many2one(
+        comodel_name='garaje.aparcamiento', 
+        string='Aparcamiento'
+    )
+    mantenimientoIds = fields.Many2many(
+        comodel_name='garaje.mantenimiento', 
+        string='Mantenimiento'
+    )
+
+    # fields @api and compute
+
+    anual = fields.Integer(
+        string='Años', 
+        compute='_get_anual'
+    )
+
+    @api.depends('construido')
+    def _get_anual(self):
+        for coche in self:
+            fechaActual = date.today()
+            coche.anual = relativedelta(
+                fechaActual,
+                coche.construido
+            ).years
+    
+    #model constraint fields
+    #Documentacion: https://www.odoo.com/documentation/15.0/es/developer/howtos/backend.html#model-constraints
+
+    _sql_constraints = [('name_uniq','unique(name)', 'La matricula ya existe, porfavor ingresa otra.' )]
+    

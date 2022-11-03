@@ -16,6 +16,9 @@
                     <group>
                         <field name="coste"/>
                     </group>
+					<group>
+						<field name="cocheIds"/>
+					</group>
 				</sheet>
 				<!-- mail mixin fields -->
 				<div class="oe_chatter">

@@ -11,6 +11,7 @@ class GarajeMantenimiento(models.Model):
     _description = "garaje.mantenimiento"
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'fecha'
+
     #model field
     fecha = fields.Date(
         string = "Fecha",
@@ -24,16 +25,31 @@ class GarajeMantenimiento(models.Model):
             ('l', 'Lavado'), 
             ('r', 'Revision'), 
             ('p', 'Pintura'), 
-            ('m', 'Mecanica')], 
-            default = 'l'
+            ('m', 'Mecanica')
+        ],
+        default = 'l'
     )
 
     coste = fields.Float(
-        'Costo de mantenimiento',
-        (5,4),
+        string='Costo de mantenimiento',
         required = True
     )
 
-    
+    #relational fields
+    cocheIds = fields.Many2many(
+        comodel_name='garaje.coche', 
+        string='Coches'
+    )
+
+    #ORN API
+
+    def name_get(self):
+        resultados = []
+        for mantenimiento in self:
+            descripcion = f'len{mantenimiento.cocheIds} coches - gastos: {mantenimiento.coste} $'
+            resultados.append((mantenimiento.cocheIds, descripcion))
+        return resultados
+
+        # Documentacion: https://www.odoo.com/documentation/15.0/es/developer/reference/backend/orm.html#record-set-information
 
     
