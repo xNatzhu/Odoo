@@ -1,0 +1,52 @@
+group_id:id -> es el identificador del grupo de seguridad del fichero XML.(precedidos por el nombre del modulo)
+
+modulo + id del grupo.
+
+ejemplo:
+
+modulo: garaje / id del grupo 1 = group_garaje_usuario = garaje.group_garaje_usuario
+----------------------------------------------------------------------------------------------
+
+model_id:id -> siempre va "model_"nombre modulo_nombre de la clase del models (mantenimiento, coches, ect )
+
+ejemplo: model_garaje_mantenimiento
+
+De esta manera vamos vinculando con el models en el fichero csv, junto a las propiedades del archivo xml de seguridad.
+--------------------------------------------------------------------------------------------------------------
+
+name
+
+nombre modulo.nombre clase . nombre del grupo.
+
+garaje.Mantenimiento.Usuario
+
+¿De donde se saca el nombre usuario?
+
+Esto se saca
+<record model="res.groups" id="group_garaje_usuario"> 
+            <field name="name">Usuario</field>
+
+
+-------------------------------------------------
+
+
+id
+
+access_la columna name cambiando los puntos por _
+
+access_garaje_Mantenimiento_Usuario
+
+access_nombre del modulo. nombre de la clase. nombre del grupo de segurity.
+
+
+-------------------------------------------------------------------------------------
+
+PERMISOS
+
+perm_read,perm_write,perm_create,perm_unlink
+
+	- Permiso para leer
+	-Permiso para escribir
+	- Permiso para crear
+
+se le agrega 1 en el caso que tenga acceso a esos permiso, y en el caso que no 0.
