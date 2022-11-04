@@ -1,0 +1,15 @@
+<odoo> <!--DATOS PERMANENTES QUE CARGA LA APLICACION-->
+    <data>
+    <!--por ejemplos supongamos que tengamos datos contables, datos que pueden cambiar pero son medio estaticos(datos que no cambian con el tiempo y no pueden editar los usuarios)-->
+
+    <!--Por ejemplo ya que estamos trabajando con garajes, podria sido interesante ya dejarlo pre cargado los datos de los garajes-->
+    
+    <!--Se coloca el  data en otro fichero porque lo vamos a referenciar - y si el referenciar no lleva etiqueta va dar error. -->
+
+
+
+
+
+    </data>
+</odoo>
+
