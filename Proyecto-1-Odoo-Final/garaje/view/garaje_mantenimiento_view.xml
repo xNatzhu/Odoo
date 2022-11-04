@@ -82,7 +82,7 @@
 	<record id="action_garaje_mantenimiento" model="ir.actions.act_window">
 		<field name="name">Mantenimiento</field>
 		<field name="res_model">garaje.mantenimiento</field>
-		<field name="view_mode">tree,form</field>
+		<field name="view_mode">tree,form,calendar</field>
 		<field name="context">{'search_default_group_by_tipo': False}</field><!--search by default-->
 	</record>
 

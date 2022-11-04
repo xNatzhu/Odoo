@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Garaje App Top Menu: no parent -->
-    <menuitem id="main_garaje_menu" name="Garaje" web_icon="garaje,static/description/icon.jpg" sequence="200" />
+    <menuitem id="main_garaje_menu" name="Garaje" web_icon="garaje,static/description/icon.png" sequence="200" />
 </odoo>

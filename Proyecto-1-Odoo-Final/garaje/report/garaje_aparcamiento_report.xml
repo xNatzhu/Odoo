@@ -1,0 +1,12 @@
+<odoo>
+<!--Definicion-->
+    <record id="garaje.aparcamiento_report" model="ir.actions.report">
+        <field name="name">Informe de aparcamiento</field> <!--Nombre que aparecera en el menu-->
+        <field name="model">garaje.aparcamiento</field>
+        <field name="report_type">qweb-pdf</field> <!--Representa el tipo de reporte PDF o web-->
+        <field name="report_name">garaje.aparcamiento_report_invoice_view</field><!--Vinculacion con el template-->
+        <field name="report_file">garaje.aparcamiento_report_invoice</field>
+        <field name="binding_model_id" ref="model_garaje_aparcamiento"/><!--model_modulo_clase-->
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

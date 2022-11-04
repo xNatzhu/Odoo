@@ -35,6 +35,8 @@
         'view/garaje_aparcamiento_view.xml',
         'view/garaje_coche_view.xml',
         'view/garaje_mantenimiento_view.xml',
+        'report/garaje_aparcamiento_report.xml',
+        'report/garaje_aparcamiento_template.xml',
         'security/garaje_security_view.xml',
     ],
 
