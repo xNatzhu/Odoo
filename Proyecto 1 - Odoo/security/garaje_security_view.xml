@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_issue_form_remove_edit_create" model="ir.ui.view">
+		<field name="name">view.issue.form.remove.edit.create</field>
+    <field name="model">garaje.aparcamiento</field>
+    <field name="inherit_id" ref="garaje.garaje_aparcamiento_form_view"/>
+    <field name="groups_id" eval="[(4, ref('garaje.garaje_group_view'))]"/>
+    <field name="arch" type="xml">
+    	<xpath expr="//form" position="attributes">
+      	<attribute name="edit">false</attribute>
+				<attribute name="create">false</attribute>
+      </xpath>
+    </field>
+  </record>
+	<record id="view_issue_form_show_edit_create" model="ir.ui.view">
+		<field name="name">view.issue.form.show.edit.create</field>
+    <field name="model">garaje.aparcamiento</field>
+    <field name="inherit_id" ref="garaje.garaje_aparcamiento_form_view"/>
+    <field name="groups_id" eval="[(4, ref('garaje.garaje_group_user'))]"/>
+    <field name="arch" type="xml">
+    	<xpath expr="//form" position="attributes">
+      	<attribute name="edit">true</attribute>
+				<attribute name="create">true</attribute>
+      </xpath>
+    </field>
+  </record>
+</odoo>

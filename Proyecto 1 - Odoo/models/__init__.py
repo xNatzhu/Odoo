@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import models
+from . import garaje_aparcamiento, garaje_coche, garaje_mantenimiento

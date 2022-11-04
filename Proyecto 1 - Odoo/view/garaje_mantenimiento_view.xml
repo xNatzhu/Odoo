@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!--Main Garaje MANTENIMIENTO FORM view-->
+	<record id="garaje_mantenimiento_form_view" model="ir.ui.view">
+		<field name="name">garaje_mantenimiento_form_view</field>
+		<field name="model">garaje.mantenimiento</field>
+		<field name="arch" type="xml">
+			<form string="Informacion del vehiculo">
+				<header></header>
+				<sheet>
+					<group>
+                    <!--model fields-->
+						<field name="fecha"/>
+						<field name="tipo"/>
+					</group>
+                    <group>
+                        <field name="coste"/>
+                    </group>
+					<group>
+						<field name="cocheIds"/>
+					</group>
+				</sheet>
+				<!-- mail mixin fields -->
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers" />
+					<field name="activity_ids" widget="mail_activity" />
+					<field name="message_ids" widget="mail_thread" />
+				</div>
+			</form>
+		</field>
+	</record>
+
+
+	<!--Main Garaje MANTENIMIENTO TREE view-->
+	<record id="garaje_mantenimiento_tree_view" model="ir.ui.view">
+		<field name="name">garaje_mantenimiento_tree_view</field>
+		<field name="model">garaje.mantenimiento</field>
+		<field name="arch" type="xml">
+			<tree>
+                <!--model fields-->
+				<field name="fecha"/>
+				<field name="tipo"/>
+                <field name="coste"/>
+			</tree>
+		</field> 
+	</record>
+		
+		
+	<!--Main Garaje MANTENIMIENTO SEARCH view-->
+	<record id="garaje_mantenimiento_search_view" model="ir.ui.view">
+		<field name="name">garaje_mantenimiento_search_view</field>
+		<field name="model">garaje.mantenimiento</field>
+		<field name="arch" type="xml">
+        <search>
+          <field name="fecha"/>
+          <field name="tipo" widget="selection"/> 
+          <group>
+          	<filter name="group_by_tipo" string="Tipo" context="{'group_by':'tipo'}"/>
+          </group>
+        </search>
+		</field> 
+	</record>
+	
+		
+	<!--Main Garaje MANTENIMIENTO CALENDAR view-->
+	<record id="garaje_mantenimiento_calendar_view" model="ir.ui.view">
+		<field name="name">garaje_mantenimiento_calendar_view</field>
+		<field name="model">garaje.mantenimiento</field>
+		<field name="arch" type="xml">
+        <calendar string="Calendario de mantenimiento" date_start="fecha" color="tipo" mode="month">
+          <field name="tipo"/>
+          <field name="coste"/>
+        </calendar>
+		</field> 
+	</record>
+	
+	
+
+	
+	
+	<!-- Garaje ACTIONS window -->
+	<record id="action_garaje_mantenimiento" model="ir.actions.act_window">
+		<field name="name">Mantenimiento</field>
+		<field name="res_model">garaje.mantenimiento</field>
+		<field name="view_mode">tree,form,calendar</field>
+		<field name="context">{'search_default_group_by_tipo': False}</field><!--search by default-->
+	</record>
+
+	<!-- Garaje Mantenimiento Menu -->
+	<menuitem id="garaje_mantenimiento_menu" name="Mantenimiento" parent="main_garaje_menu" action="action_garaje_mantenimiento" sequence="220" />
+</odoo>
