@@ -16,21 +16,30 @@ class SportServiceCliente(models.Model):
         default = fields.date.today(),
         required = True,
      )
-
+     
+    partnerId = fields.Integer(
+        string="N° de cliente", 
+        required = True,
+    )
+    
+    serviceIds = fields.Many2many(
+        comodel_name= 'sportservice.servicio',
+        string="Servicios inscripto",
+    )
     email = fields.Char(
         string="Correo electrónico",
         required = True,
-        compute = '_get_value_mail',
+        #compute = '_get_value_mail',
      )
     phone = fields.Char(
         string="Teléfono",
     )
     profilePicture = fields.Image(
-        string="Imagen",
+        string="Imagen de perfil",
     )
 
-    @api.multi
-    @api.depends('email')
+    #@api.multi
+    #@api.depends('email')
 
-    def _get_value_mail(self):
-        pass
+    #def _get_value_mail(self):
+        #pass

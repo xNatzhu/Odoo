@@ -1,7 +1,13 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 access_sportservice_cliente_manager,sportservice.cliente,model_sportservice_cliente,sportservice_group_manager,1,1,1,1
+access_sportservice_trabajador_manager,sportservice.trabajador,model_sportservice_trabajador,sportservice_group_manager,1,1,1,1
+access_sportservice_servicio_manager,sportservice.servicio,model_sportservice_servicio,sportservice_group_manager,1,1,1,1
 
 access_sportservice_cliente_user,sportservice.cliente,model_sportservice_cliente,sportservice_group_user,1,1,1,1
+access_sportservice_trabajador_user,sportservice.trabajador,model_sportservice_trabajador,sportservice_group_user,1,1,1,1
+access_sportservice_servicio_user,sportservice.servicio,model_sportservice_servicio,sportservice_group_user,1,1,1,1
 
 access_sportservice_cliente_view,sportservice.cliente,model_sportservice_cliente,sportservice_group_view,1,1,1,1
+access_sportservice_trabajador_view,sportservice.trabajador,model_sportservice_trabajador,sportservice_group_view,1,1,1,1
+access_sportservice_servicio_view,sportservice.servicio,model_sportservice_servicio,sportservice_group_view,1,1,1,1

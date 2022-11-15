@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ <!--Main sportservice SportServiceServicio form view-->
+
+	<!--Main Sport Service Servicio FORM view-->
+	<record id="sportservice_servicio_form_view" model="ir.ui.view">
+		<field name="name">sportservice_servicio_form_view</field>
+		<field name="model">sportservice.servicio</field>
+		<field name="arch" type="xml">
+			<form>
+				<header></header>
+				<sheet>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+								<group>
+                                	<field name="serviceImage"  widget= "image" height = "50" />
+								</group>
+                            </div>
+                            <div class="col">
+								<group>
+									<field name="name" />
+									<field name="serviceId" />
+									<field name="servicePrice" widget="monetary" />
+									<field name="serviceInstallation" />
+									<field name="duration" />
+								</group>
+                            </div>
+                        </div>
+                    </div>
+					
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+								<group>
+                                	<field name="serviceDays"/>
+								</group>
+                            </div>
+                        </div>
+                    </div>
+					<group>
+						<field name="description" />
+						<field name="partnerIds" />
+						<field name="employeeIds" />
+					</group>
+				</sheet>
+				<!-- mail mixin fields -->
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers" />
+					<field name="activity_ids" widget="mail_activity" />
+					<field name="message_ids" widget="mail_thread" />
+				</div>
+			</form>
+		</field>
+	</record>
+
+	
+	<!--Main Sport Service Servicio TREE view-->
+	<record id="sportservice_servicio_tree_view" model="ir.ui.view">
+		<field name="name">sportservice_servicio_tree_view</field>
+		<field name="model">sportservice.servicio</field>
+		<field name="arch" type="xml">
+			<tree>
+                <!--model fields-->
+				<field name="serviceId" />
+				<field name="name"/>
+				<field name="serviceInstallation"/>
+				<field name="servicePrice"/>
+			</tree>
+		</field>
+	</record>
+	
+	<!-- Sport Services ACTIONS window -->
+	<record id="action_sportservice_servicio" model="ir.actions.act_window">
+		<field name="name">Servicio</field>
+		<field name="res_model">sportservice.servicio</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<!-- Sport Services Menu -->
+	<menuitem id="sportservice_servicio_menu" name="Servicio" parent="main_sporservice_menu" action="action_sportservice_servicio" sequence="220" />
+
+</odoo>
